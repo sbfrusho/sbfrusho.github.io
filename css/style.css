@@ -20,7 +20,7 @@ body{
 }
 .up{
     width: 100%;
-    height: 20%;
+    height: auto;
     background-color: lightblue;
     display: flex;
     justify-content: space-between;
