@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/figma.css">
+    <title>Contact Me</title>
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <div class="container">
+            <div>
+                <h2 class="text-center mb-5 shadow-sm p-3">Contact Me</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-7 shadow rounded p-5">
+                    <form onsubmit="sendMail();reset();return false;">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" id = "fName" class="form-control" placeholder="Ex. John">
+                            </div>
+                            <div class="col mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" id = "lName" class="form-control" placeholder="Ex. Cornwall">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone No.</label>
+                            <input type="text" id = "phone" class="form-control" placeholder="+880 123xxxxxxx">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="text" id = "email" class="form-control" placeholder="example@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Subject</label>
+                            <input type="text" id = "subject" class="form-control" placeholder="Enter your subject of contact  ">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea name="" id = "message" class="form-control" rows="3"
+                                placeholder="Enter your message here"></textarea>
+                        </div>
+                        <div class="mb-3  d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button class="btn btn-outline-info" type="submit">Button</button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-5 mt-3 mb-3 d-md-flex justify-content-md-center">
+                    <img src="https://www.tajtrademark.com/images/contact.jpg" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendMail(){
+            let firstName = document.getElementById("fName").value;
+            let lastName = document.getElementById("lName").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let subject = document.getElementById("subject").value;
+            let msg = document.getElementById("message").value;
+                    Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "rushocseru28@gmail.com",
+                Password : "3715DAF720E213DF11993BD93A9016793352",
+                To : 's2010776109@ru.ac.bd',
+                From : "rushocseru28@gmail.com",
+                Subject : "Subject: "+subject,
+                Body : "Name: " + firstName + " " + lastName + "<br>E-mail: "
+                        + email + "<br>Phone: " + phone + "<br>Massage: " + msg
+            }).then(
+            message => alert(message)
+            );
+        }
+    </script>
+
+
+    
+</body>
+
+</html>

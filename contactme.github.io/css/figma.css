@@ -1,0 +1,31 @@
+:root {
+    --color-base: #13839B;
+    --color-background1: #13839B;
+    --color-background2: #000;
+    --color-background3: #85ADCB;
+    --color-text: #ffffff;
+    --color-icon: #cd3e47ac;
+    /* --sidbar-width: 250px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-text);
+   
+    font-weight: 700;
+}
+
+body{
+    background-color: #13839B;
+}
+.row{
+    background-color: var(--color-background3);
+}
+.btn{
+    color: #000;
+    background-color: #85ADCB;
+}
