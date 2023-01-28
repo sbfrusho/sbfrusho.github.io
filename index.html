@@ -1,105 +1,324 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/figma.css">
-    <title>Contact Me</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Using Bootstrap</title>
+    <link rel="stylesheet" href="./assets/css/aos.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body class="all">
+<body data-bs-spy="scroll" data-bs-target="#navbar">
 
-    <div class="back"></div>
-    <div class="container-fluid">
-        <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-dark fixed-top">
+        <div class="container flex-lg-column">
+            <a class="navbar-brand mx-lg-auto mb-lg-4" href="#">
+                <span class="h3 fw-bold d-block d-lg-none">SBF Rusho</span>
+                <img id="my_image" src="https://raw.githubusercontent.com/sbfrusho/sbfrusho.github.io/main/IMG_20221219_224913_907.jpg" class="d-none d-lg-block rounded-circle" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
 
-            <div class="row mt-5">
-                <div class="contact">
-                    <h2 class="text-center mb-5 shadow-sm p-3">Contact Me</h2>
-                </div>
-                <div class="col-md-7 shadow rounded p-5">
-                    <form onsubmit="sendMail(); reset(); return false;">
-
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label class="form-label">First Name</label>
-                            <input type="text" id="fName" class="fName form-control" placeholder="Ex. John">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#work">Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <div class="col-auto pt-4">
+                        <div class="social-icons">
+                            <a href="mail.google.com/mail/u/0/#inbox?compose=new"><i class="las la-envelope"></i>sbfrusho@gmail.com</a>
                         </div>
-                        <div class="col mb-3">
-                            <label class="form-label">Last Name</label>
-                            <input type="text" id="lName" class="lName form-control" placeholder="Ex. Cornwall">
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /Navbar -->
+
+    <!-- Content wrapper -->
+    <div id="content-wrapper">
+        <!-- Home -->
+        <section id="home" class="full-height px-lg-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1 class="display-4 fw-bold" data-aos="fade-up">I'M A <span class="text-brand">ANDROID APP
+                                DEVELOPER</span> FROM BANGLADESH </h1>
+                        <p class="lead mt-2 mb-4" data-aos="fade-up" data-aos-delay="300">I am SBF Rusho. I have 2 years of app developin experience.<br>
+                         And I craft high-performing and delightful experiences tailored and conversion focused.</p>
+                        <div data-aos="fade-up" data-aos-delay="600">
+                            <a href="#work" class="btn btn-brand me-4">Explore My Work</a>
+                            <a href="#" class="link-custom">Call: (+880) 1677-652072</a>
                         </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Phone No.</label>
-                        <input type="text" id="phone" class="phone form-control" placeholder="+880 123xxxxxxx">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="text" id="email" class="email form-control" placeholder="example@example.com">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Subject</label>
-                        <input type="text" id="subject" class="subject form-control"
-                            placeholder="Enter your subject of contact  ">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Message</label>
-                        <textarea name="" id="message" class="message form-control" rows="3"
-                            placeholder="Enter your message here"></textarea>
-                    </div>
-                    <!-- Button trigger modal -->
-                    <div class="btn">
-                        <button type="submit" class="btn btn-info mx-auto">
-                            Submit
-                        </button>
-                    </div>
-
-                    </form>
-                </div>
-
-                <div class="col-md-5 mt-3 mb-3 d-md-flex justify-content-md-center">
-                    <img src="https://www.tajtrademark.com/images/contact.jpg" alt="" class="img-fluid">
                 </div>
             </div>
+        </section>
+        <!-- //Home -->
 
+        <!-- services -->
+        <section id="services" class="full-height px-lg-5">
+            <div class="container">
 
-        </div>
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h6 class="text-brand">SERVICES</h6>
+                        <h1>Services That I Provide</h1>
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+
+                    <div class="col-md-4" data-aos="fade-up">
+                        <div class="services p-4 bg-base rounded-4 shadow-effect">
+                            <div class="iconbox rounded-3">
+                                <i class="las la-feather-alt"></i>
+                            </div>
+                            <h5 class="mt-4 mb-2">App Design</h5>
+                            <p>I make UI for android applications.</p>
+                            <a href="#" class="link-custom">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="services p-4 bg-base rounded-4 shadow-effect">
+                            <div class="iconbox rounded-3">
+                                <i class="las la-feather-alt"></i>
+                            </div>
+                            <h5 class="mt-4 mb-2">Coding</h5>
+                            <p>I also have vast experience of OOP. I do coding part of my own app.</p>
+                            <a href="#" class="link-custom">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="services p-4 bg-base rounded-4 shadow-effect">
+                            <div class="iconbox rounded-3">
+                                <i class="las la-feather-alt"></i>
+                            </div>
+                            <h5 class="mt-4 mb-2">Branding</h5>
+                            <p>I craft high-performing experience tailored and conversion-focused</p>
+                            <a href="#" class="link-custom">Read More</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- /services -->
+
+        <!-- Work -->
+        <section id="work" class="full-height px-lg-5">
+            <div class="container">
+    
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h6 class="text-brand">WORK</h6>
+                        <h1>My Recent Projects</h1>
+                    </div>
+                </div>
+    
+                <div class="row gy-4">
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-custom rounded-4 bg-base rounded-4 shadow-effect">
+                            <div class="card-custom-image rounded-4 pb-4">
+                                <img class="rounded-4" height="200px"
+                                    src="https://play-lh.googleusercontent.com/FBPWuDLziYNdnUP9Y3FfT-ZLlSEtQD_BBeQ-EgXPgk1SqprlgdnSil39Tsln0T1AkdM=w526-h296-rw"
+                                    alt="converter image">
+                            </div>
+                            <div class="p-2">
+                                <h4>KG to Pound Converter App</h4>
+                                <p>This app converts kg weight to pound. <br>The app is made using Java.</p>
+                                <a href="#" class="custom-link">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-custom rounded-4 bg-base rounded-4 shadow-effect">
+                            <div class="card-custom-image rounded-4 pb-4">
+                                <img class="rounded-4" height="200px"
+                                    src="https://play-lh.googleusercontent.com/q8Cj5Bzc4oXUch8_54pZfVxuowiPVBENNRNjYXC0lomur96TNhirUd6FGzaRzatLqRk=w800-h500"
+                                    alt="Multiplication Table">
+                            </div>
+                            <div class="p-2">
+                                <h4>Multiplication <Table></Table> App</h4>
+                                <p>This app gives the mulitplication table of<br> a specific number. The app is made using
+                                    Java.</p>
+                                <a href="#" class="custom-link">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </section>
+        <!-- /Work -->
+
+        <!-- About -->
+        <section id="about" class="full-height px-lg-5">
+            <div class="container">
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h6 class="text-brand">ABOUT</h6>
+                        <h1>Education and Experiences</h1>
+                    </div>
+                </div>
+                <div class="row gy-5">
+                    <div class="col-lg-6">
+                        <h4 data-aos="fade-up" data-aos-delay="300">Education</h4>
+                        <div class="row gy-4">
+                            <div class="col-12">
+                                <div class="bg-base p-4 rounded-4 shadow-effect" data-aos="fade-up" data-aos-delay="300">
+                                    <p>SEPT 2010 - JAN 2014<br>
+                                        B.Sc in Computer Science and Engineering<br>
+                                        University of Rajshahi, Rajshahi, Bangladesh<br>
+                                        Coursework in functional programming, database and machine learning</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row gy-4 mt-1">
+                            <div class="col-12 gy-4">
+                                <div class="bg-base p-4 rounded-4 shadow-effect" data-aos="fade-up" data-aos-delay="400">
+                                    <p>SEPT 2010 - JAN 2014<br>
+                                        B.Sc in Computer Science and Engineering<br>
+                                        University of Rajshahi, Rajshahi, Bangladesh<br>
+                                        Coursework in functional programming, database and machine learning</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 data-aos="fade-up" data-aos-delay="300">Experiences</h4>
+                        <div class="row gy-4">
+                            <div class="col-12">
+                                <div class="bg-base p-4 rounded-4 shadow-effect" data-aos="fade-up" data-aos-delay="500">
+                                    <div class="experience1">
+                                        <p> JUN 2015 - JAN 2016<br>
+                                            <b>Software Intern</b><br>
+                                            Company XYZ-Dhaka,Bangladesh<br>
+                                        <ul>
+                                            <li>Developed web interface using jSP.</li>
+                                            <li>Contributed to team meetings.</li>
+                                            <li>Provided status updates on development tasks.</li>
+                                            <li>Performed debug and performance analysis.</li>
+                                        </ul><br>
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row gy-4 mt-1">
+                            <div class="col-12 gy-4">
+                                <div class="bg-base p-4 rounded-4 shadow-effect" data-aos="fade-up" data-aos-delay="600">
+                                    <div>
+                                        FEB 2016 - DEC 2019 <BR>
+                                        <b>Junior Software Engineer</b><br>
+                                        ABC-TECH, Dhaka, Bangladesh
+                                        <ul>
+                                            <li>Contributed to development of 15 projects using C#, Java and PHP.</li>
+                                            <li>Participated in code reviews.</li>
+                                            <li>Provided development support.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /About -->
+
+        <!-- Contacts -->
+        <section id="contact" class="full-height px-lg-5">
+            <div class="container">
+                
+                <div class="row justify-content-center text-center" data-aos="fade-up">
+                    <div class="col-lg-8 pb-4">
+                        <h6 class="text-brand">CONTACTS</h6>
+                        <h1>Interested in Working together? Let's talk</h1>
+                    </div>
+
+                    <div class="col-lg-8" data-aos="fade-up" data-aos-delay="300">
+                        <form action="#" class="row g-lg-3 gy-3">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" placeholder="Enter your name">
+                            </div>
+                            
+                            <div class="form-group col-md-6">
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" placeholder="Enter subject">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <textarea name="" class="form-control" rows="4" placeholder="Enter your massage"></textarea>
+                            </div>
+
+                            <div class="form-group col-md-12 display-grid">
+                                <button type="submit" class="btn btn-brand">Contact Me</button>    
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+
+            </div>
+        </section>
+        <!-- /Contacts -->
+
+         <!-- FOOTER -->
+         <footer class="py-5 px-lg-5">
+            <div class="container">
+                <div class="row gy-4 justify-content-between">
+                    <div class="col-auto">
+                        <p class="mb-0">Find me on <a href="#" class="fw-bold">Social Media</a></p>
+                    </div>
+                    <div class="col-auto">
+                        <div class="social-icons">
+                            <a href="https:/www.facebook.com/" target = "_blank" ><i class="lab la-facebook"></i></a>
+                            <a href="https://www.instagram.com/" target = "_blank"><i class="lab la-instagram"></i></a>
+                            <a href="https://mail.google.com/" target = "_blank"><i class="las la-envelope"></i></a>
+                            <a href="https://github.com/" target = "_blank"><i class="lab la-github"></i></a>
+                            <a href="https://www.linkedin.com/" target = "_blank"><i class="lab la-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- //FOOTER -->
+
     </div>
+    <!-- /Content wrapper -->
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-
-    <script>
-        function sendMail() {
-            let firstName = document.getElementById("fName").value;
-            let lastName = document.getElementById("lName").value;
-            let email = document.getElementById("email").value;
-            let phone = document.getElementById("phone").value;
-            let msg = document.getElementById("message").value;
-            let subject = document.getElementById("subject").value;
-
-            Email.send({
-                Host : "smtp.elasticemail.com",
-                Username : "sbfrusho@gmail.com",
-                Password : "C27A30E3568340E44AB36ECD1549322012A2",
-                To : 's2010776109@ru.ac.bd',
-                From : "sbfrusho@gmail.com",
-                Subject : "Subject: " +subject,
-                Body : "Name: " + firstName + " " + lastName + "<br>E-mail: "
-                        + email + "<br>Phone: " + phone + "<br>Massage: " + msg
-
-            }).then(
-            message => alert("Sent.")
-            );
-        }
-    </script>
+    <script src="./assets/js/aos.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
