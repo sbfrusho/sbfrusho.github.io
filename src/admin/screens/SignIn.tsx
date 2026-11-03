@@ -58,7 +58,7 @@ export function SignIn() {
           <a href="/" className="flex min-h-11 min-w-0 items-center gap-2 rounded font-display text-base font-semibold tracking-tight text-ink hover:text-accent" title="Back to the site">
             <BrandMark />
             <span className="truncate">{siteName()}</span>
-            <span className="font-mono text-xs font-normal text-ink-2">admin</span>
+            <span className="text-xs font-normal text-ink-2">admin</span>
           </a>
           <ThemeToggle />
         </div>

@@ -132,7 +132,7 @@ export function PageHeader({ eyebrow, title, description, actions }: { eyebrow?:
   return (
     <header className="mb-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-3 sm:mb-6">
       <div className="min-w-0">
-        {eyebrow && <p className="mb-1 font-mono text-xs tracking-wide text-ink-2">{eyebrow}</p>}
+        {eyebrow && <p className="mb-1 text-xs tracking-wide text-ink-2">{eyebrow}</p>}
         <h1 ref={ref} tabIndex={-1} data-page-title className="font-display text-3xl font-semibold leading-none tracking-tight text-ink outline-none sm:text-4xl">
           {title}
         </h1>

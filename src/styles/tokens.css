@@ -4,7 +4,6 @@
  * Theme: follows the OS, overridden by <html data-theme="light|dark">.
  */
 @import "@fontsource-variable/inter";
-@import "@fontsource-variable/bricolage-grotesque/opsz.css"; /* opsz + wght: the large optical size carries the display character */
 @import "@fontsource-variable/jetbrains-mono";
 @import "tailwindcss";
 
@@ -78,7 +77,7 @@
   --color-danger: var(--danger);
   --color-warning: var(--warning);
   --shadow-card: var(--shadow);
-  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 }

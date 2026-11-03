@@ -79,7 +79,7 @@ export function Dashboard() {
         </Card>
       </div>
 
-      <h2 className="mb-2 mt-6 font-mono text-xs tracking-wide text-ink-2">Content</h2>
+      <h2 className="mb-2 mt-6 text-xs tracking-wide text-ink-2">Content</h2>
       <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--r-3)] border border-line bg-line sm:grid-cols-4">
         {tiles.map((t) => (
           <li key={t.label} className="bg-surface">

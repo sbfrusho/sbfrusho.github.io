@@ -25,7 +25,7 @@ html:not(.js) [data-theme-toggle], html:not(.js) .filters { display: none; }
 
 /* Shared type ---------------------------------------------------------- */
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: .75rem;
   line-height: 1.5;
   letter-spacing: .02em;
@@ -98,7 +98,7 @@ html:not(.js) [data-theme-toggle], html:not(.js) .filters { display: none; }
   width: fit-content; max-width: 100%;
   padding: .25rem .6rem;
   background: var(--accent); color: var(--accent-ink);
-  font-family: var(--font-mono); font-size: .75rem; font-weight: 500; line-height: 1.4;
+  font-family: var(--font-sans); font-size: .75rem; font-weight: 500; line-height: 1.4;
 }
 
 /* Header ---------------------------------------------------------------- */
@@ -166,7 +166,7 @@ summary.icon-btn::-webkit-details-marker { display: none; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: .75rem 2rem; margin-bottom: clamp(2rem, 5vw, 4.5rem);
 }
-.roles { display: flex; flex-wrap: wrap; gap: .1rem 0; font-family: var(--font-mono); font-size: .8125rem; color: var(--ink-2); }
+.roles { display: flex; flex-wrap: wrap; gap: .1rem 0; font-family: var(--font-sans); font-size: .8125rem; color: var(--ink-2); }
 .roles li:not(:last-child)::after { content: "/"; margin-inline: .6rem; color: var(--ink-3); }
 .badge {
   display: inline-flex; align-items: center; gap: .55rem;
@@ -242,7 +242,7 @@ summary.icon-btn::-webkit-details-marker { display: none; }
   .hero-grid-photo .hero-name { grid-area: name; }
   .hero-grid-photo .hero-photo { grid-area: photo; max-width: none; }
   .hero-grid-photo .hero-body { grid-area: body; }
-  .hero-name { font-size: clamp(3.5rem, 8vw, 8.25rem); }
+  .hero-name { font-size: clamp(3.5rem, 7.4vw, 7rem); }
   .stats { grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); column-gap: clamp(1.5rem, 3vw, 3rem); border-top: 0; }
   .stats > div { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; padding-block: 1.25rem 0; border-bottom: 0; border-top: 1px solid var(--ink); }
 }
@@ -303,7 +303,7 @@ summary.icon-btn::-webkit-details-marker { display: none; }
 }
 .chip:hover { border-color: var(--ink-3); color: var(--ink); }
 .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-.chip-n { font-family: var(--font-mono); font-size: .75rem; opacity: .8; }
+.chip-n { font-family: var(--font-sans); font-size: .75rem; opacity: .8; }
 
 .cover { position: relative; overflow: hidden; border-radius: var(--r-3); background: var(--surface-2); aspect-ratio: 16 / 10; }
 .cover svg { display: block; width: 100%; height: 100%; }
@@ -424,7 +424,7 @@ summary.icon-btn::-webkit-details-marker { display: none; }
   margin-top: clamp(1.75rem, 4vw, 3.5rem);
   font-family: var(--font-display); font-weight: 600;
   /* Sizes to the address, so short and long emails both span the band. */
-  font-size: clamp(1.25rem, calc(100cqi / (var(--n) * .52)), 6.5rem); line-height: 1.04; letter-spacing: -.02em;
+  font-size: clamp(1rem, calc(100cqi / (var(--n) * .6)), 6.5rem); line-height: 1.04; letter-spacing: -.02em;
   overflow-wrap: anywhere;
 }
 .contact-email a { text-decoration: underline; text-decoration-thickness: .04em; text-underline-offset: .12em; }

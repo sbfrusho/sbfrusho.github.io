@@ -42,7 +42,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
     <nav aria-label="Admin sections" className="flex flex-col gap-4">
       {NAV.map((g) => (
         <div key={g.group || "top"}>
-          {g.group && <p className="mb-1 px-3 font-mono text-xs tracking-wide text-ink-2">{g.group}</p>}
+          {g.group && <p className="mb-1 px-3 text-xs tracking-wide text-ink-2">{g.group}</p>}
           <ul className="flex flex-col gap-0.5">
             {g.items.map((item) => {
               const active = screen === item.key;
@@ -104,7 +104,7 @@ function Brand() {
   return (
     <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className="group block rounded px-3" title="Open the live site">
       <span className="flex items-center gap-2 font-display text-lg font-semibold leading-tight tracking-tight text-ink group-hover:text-accent"><BrandMark /><span className="truncate">{name}</span></span>
-      <span className="block font-mono text-xs tracking-wide text-ink-2">admin panel</span>
+      <span className="block text-xs tracking-wide text-ink-2">admin panel</span>
     </a>
   );
 }
@@ -216,7 +216,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <div className="flex min-h-dvh min-w-0 flex-col">
         <header className="sticky top-0 z-20 flex items-center gap-1 border-b border-line bg-[color-mix(in_oklab,var(--surface)_94%,transparent)] px-1.5 py-1 backdrop-blur lg:hidden">
           <IconButton label="Open navigation" icon="menu" onClick={() => setDrawer(true)} data-testid="open-drawer" />
-          <p className="flex min-w-0 flex-1 items-center gap-2 font-display text-base font-semibold tracking-tight"><BrandMark /><span className="truncate">{headerName}</span> <span className="font-mono text-xs font-normal text-ink-2">admin</span></p>
+          <p className="flex min-w-0 flex-1 items-center gap-2 font-display text-base font-semibold tracking-tight"><BrandMark /><span className="truncate">{headerName}</span> <span className="text-xs font-normal text-ink-2">admin</span></p>
           <ThemeToggle />
         </header>
         <Drawer open={drawer} onClose={() => setDrawer(false)} />
