@@ -1,0 +1,13 @@
+---
+import ExtLink from "./ExtLink.astro";
+import type { z } from "zod";
+import type { linkSchema } from "@/lib/schema";
+
+interface Props { links: z.infer<typeof linkSchema>[] }
+const { links } = Astro.props;
+---
+{links.length > 0 && (
+  <ul class="link-row">
+    {links.map((link) => <li><ExtLink href={link.url}>{link.label}</ExtLink></li>)}
+  </ul>
+)}

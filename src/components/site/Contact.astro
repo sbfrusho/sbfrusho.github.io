@@ -1,0 +1,24 @@
+---
+import { content } from "@/lib/content";
+import Icon from "./Icon.astro";
+import SocialLinks from "./SocialLinks.astro";
+
+const { profile } = content;
+const tel = profile.phone.replace(/[^+\d]/g, "");
+---
+<section id="contact" class="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 id="contact-title" class="contact-title">Get in touch</h2>
+    {profile.available && profile.availabilityText && <p class="contact-lead">{profile.availabilityText}</p>}
+    <p class="contact-email" style={`--n:${profile.email.length}`}><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+    <div class="contact-foot">
+      {(profile.phone || profile.location) && (
+        <ul class="contact-details">
+          {profile.phone && <li><a href={`tel:${tel}`}><Icon name="phone" size={16} />{profile.phone}</a></li>}
+          {profile.location && <li><span><Icon name="pin" size={16} />{profile.location}</span></li>}
+        </ul>
+      )}
+      <SocialLinks class="socials socials-contact" />
+    </div>
+  </div>
+</section>

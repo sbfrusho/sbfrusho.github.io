@@ -1,0 +1,35 @@
+---
+import { content } from "@/lib/content";
+import ExtLink from "./ExtLink.astro";
+import LinkRow from "./LinkRow.astro";
+import TechList from "./TechList.astro";
+
+const period = (start: string, end: string, current: boolean) => {
+  const finish = current ? "Present" : end;
+  return finish ? `${start} – ${finish}` : start;
+};
+---
+<section id="experience" class="section" aria-labelledby="experience-title">
+  <div class="wrap rail">
+    <h2 id="experience-title" class="section-title">Experience</h2>
+    <ol class="rail-body timeline">
+      {content.experience.map((job) => (
+        <li class:list={["job", { "job-current": job.current }]} data-reveal>
+          <p class="eyebrow job-period">{period(job.start, job.end, job.current)}</p>
+          <h3 class="job-role">{job.role}</h3>
+          <p class="job-company">
+            {job.companyUrl ? <ExtLink href={job.companyUrl}>{job.company}</ExtLink> : <span>{job.company}</span>}
+            {job.location && <span class="job-location">{job.location}</span>}
+          </p>
+          {job.highlights.length > 0 && (
+            <ul class="job-highlights">
+              {job.highlights.map((item) => <li>{item}</li>)}
+            </ul>
+          )}
+          <TechList items={job.tech} />
+          <LinkRow links={job.links} />
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

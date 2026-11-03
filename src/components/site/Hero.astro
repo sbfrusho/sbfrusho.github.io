@@ -1,0 +1,71 @@
+---
+import { content } from "@/lib/content";
+import { assetExists, imageInfo } from "./assets";
+import Icon from "./Icon.astro";
+import SocialLinks from "./SocialLinks.astro";
+
+const { profile, stats } = content;
+const photo = await imageInfo(profile.photo);
+const resumes = profile.resumes.filter((r) => assetExists(r.file));
+const badge = profile.available && profile.availabilityText;
+---
+<section class="hero" aria-labelledby="hero-name">
+  <div class="wrap">
+    {(profile.roles.length > 0 || badge) && (
+      <div class="hero-meta">
+        {profile.roles.length > 0 && (
+          <ul class="roles" aria-label="Roles">
+            {profile.roles.map((role) => <li>{role}</li>)}
+          </ul>
+        )}
+        {badge && <p class="badge"><span class="badge-dot" aria-hidden="true"></span>{profile.availabilityText}</p>}
+      </div>
+    )}
+    <div class:list={["hero-grid", { "hero-grid-photo": photo }]}>
+      <h1 id="hero-name" class="hero-name">{profile.name}</h1>
+      {photo && (
+        <figure class="hero-photo">
+          <div class="det-box">
+            <img
+              src={photo.src}
+              alt={profile.photoAlt || profile.name}
+              width={photo.width}
+              height={photo.height}
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </figure>
+      )}
+      <div class="hero-body">
+        <p class="hero-headline">{profile.headline}</p>
+        <p class="hero-tagline">{profile.tagline}</p>
+        {resumes.length > 0 && (
+          <ul class="hero-cta">
+            {resumes.map((resume, i) => (
+              <li>
+                <a class:list={["btn", i === 0 ? "btn-primary" : "btn-secondary"]} href={resume.file} target="_blank" rel="noopener noreferrer">
+                  <Icon name="file" />
+                  <span>{resume.label}</span>
+                  <span class="sr-only"> (PDF, opens in a new tab)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+        <SocialLinks />
+        {profile.location && <p class="hero-location"><Icon name="pin" size={16} />{profile.location}</p>}
+      </div>
+    </div>
+    {stats.length > 0 && (
+      <dl class="stats">
+        {stats.map((stat) => (
+          <div>
+            <dt>{stat.label}</dt>
+            <dd>{stat.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+</section>

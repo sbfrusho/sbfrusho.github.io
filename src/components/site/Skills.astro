@@ -1,0 +1,20 @@
+---
+import { visibleSkills } from "./visibility";
+---
+<section id="skills" class="section" aria-labelledby="skills-title">
+  <div class="wrap rail">
+    <h2 id="skills-title" class="section-title">Skills</h2>
+    <dl class="rail-body skills">
+      {visibleSkills.map((group) => (
+        <div class="skill-row" data-reveal>
+          <dt>{group.group}</dt>
+          <dd>
+            <ul>
+              {group.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

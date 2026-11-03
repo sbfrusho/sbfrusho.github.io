@@ -1,0 +1,103 @@
+/*
+ * Shared design tokens for BOTH the public site and the admin panel.
+ * Token NAMES are a contract: values may be tuned, names may not be renamed or removed.
+ * Theme: follows the OS, overridden by <html data-theme="light|dark">.
+ */
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/bricolage-grotesque/opsz.css"; /* opsz + wght: the large optical size carries the display character */
+@import "@fontsource-variable/jetbrains-mono";
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --bg: oklch(98.2% 0.006 85);
+  --surface: oklch(100% 0 0);
+  --surface-2: oklch(95.6% 0.009 85);
+  --ink: oklch(22% 0.02 260);
+  --ink-2: oklch(42% 0.018 260);
+  --ink-3: oklch(55% 0.015 260);
+  --line: oklch(90% 0.01 85);
+  --accent: oklch(52% 0.15 165);
+  --accent-ink: oklch(99% 0.01 165);
+  --accent-soft: oklch(94% 0.04 165);
+  --danger: oklch(52% 0.19 25);
+  --warning: oklch(62% 0.14 75);
+  --shadow: 0 1px 2px oklch(22% 0.02 260 / 0.06), 0 12px 32px -12px oklch(22% 0.02 260 / 0.14);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: oklch(17.5% 0.012 260);
+    --surface: oklch(21.5% 0.014 260);
+    --surface-2: oklch(25.5% 0.015 260);
+    --ink: oklch(95% 0.006 85);
+    --ink-2: oklch(78% 0.012 260);
+    --ink-3: oklch(66% 0.014 260);
+    --line: oklch(31% 0.014 260);
+    --accent: oklch(78% 0.14 165);
+    --accent-ink: oklch(20% 0.03 165);
+    --accent-soft: oklch(30% 0.05 165);
+    --danger: oklch(70% 0.17 25);
+    --warning: oklch(80% 0.13 80);
+    --shadow: 0 1px 2px oklch(0% 0 0 / 0.3), 0 12px 32px -12px oklch(0% 0 0 / 0.55);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: oklch(17.5% 0.012 260);
+  --surface: oklch(21.5% 0.014 260);
+  --surface-2: oklch(25.5% 0.015 260);
+  --ink: oklch(95% 0.006 85);
+  --ink-2: oklch(78% 0.012 260);
+  --ink-3: oklch(66% 0.014 260);
+  --line: oklch(31% 0.014 260);
+  --accent: oklch(78% 0.14 165);
+  --accent-ink: oklch(20% 0.03 165);
+  --accent-soft: oklch(30% 0.05 165);
+  --danger: oklch(70% 0.17 25);
+  --warning: oklch(80% 0.13 80);
+  --shadow: 0 1px 2px oklch(0% 0 0 / 0.3), 0 12px 32px -12px oklch(0% 0 0 / 0.55);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --shadow-card: var(--shadow);
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+html { background: var(--bg); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); min-height: 100dvh; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* Appended by the site agent. Radius and focus scale shared by both surfaces. */
+:root {
+  --r-1: 4px;   /* tags, small insets */
+  --r-2: 8px;   /* buttons, inputs */
+  --r-3: 14px;  /* cards, covers, images */
+  /* Generated project covers. Same in both themes, like a printed poster. */
+  --cover-bg: oklch(27% 0.045 165);
+  --cover-1: oklch(83% 0.14 165);
+  --cover-2: oklch(46% 0.075 165);
+  --cover-3: oklch(33% 0.055 165);
+  --cover-ink: oklch(97% 0.012 165);
+}
+
+/* Closing contact band: the accent in light; a deep tint in dark, where a full flood of bright accent glares. */
+:root { --band-bg: var(--accent); --band-ink: var(--accent-ink); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --band-bg: oklch(29% 0.05 165); --band-ink: oklch(96% 0.012 165); }
+}
+:root[data-theme="dark"] { --band-bg: oklch(29% 0.05 165); --band-ink: oklch(96% 0.012 165); }

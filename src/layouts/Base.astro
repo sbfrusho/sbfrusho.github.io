@@ -1,0 +1,77 @@
+---
+import "@/styles/tokens.css";
+import "@/components/site/site.css";
+import displayFont from "@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-opsz-normal.woff2?url";
+import { content } from "@/lib/content";
+import { assetExists } from "@/components/site/assets";
+
+interface Props { title?: string; description?: string; noindex?: boolean }
+
+const { settings, profile, experience, education } = content;
+const { title = settings.siteTitle, description = settings.metaDescription, noindex = false } = Astro.props;
+
+const site = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(Astro.url.pathname, site).href;
+const photoUrl = assetExists(profile.photo) ? new URL(profile.photo, site).href : "";
+
+const current = experience.find((job) => job.current);
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: new URL("/", site).href,
+  description: settings.metaDescription,
+  ...(photoUrl ? { image: photoUrl } : {}),
+  ...(profile.roles[0] ? { jobTitle: profile.roles[0] } : {}),
+  email: `mailto:${profile.email}`,
+  ...(profile.location ? { homeLocation: { "@type": "Place", name: profile.location } } : {}),
+  ...(current ? { worksFor: { "@type": "Organization", name: current.company, ...(current.companyUrl ? { url: current.companyUrl } : {}) } } : {}),
+  ...(education.length ? { alumniOf: education.map((e) => ({ "@type": "CollegeOrUniversity", name: e.school })) } : {}),
+  sameAs: profile.socials.filter((s) => /^https?:/i.test(s.url)).map((s) => s.url),
+};
+/* Content is data, so the only markup-significant character here is "<", which cannot appear in the output. */
+const jsonLd = JSON.stringify(person).replace(/</g, "\\u003c");
+---
+<!doctype html>
+<html lang="en" id="top">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add("js");
+        try {
+          var theme = localStorage.getItem("theme");
+          if (theme === "light" || theme === "dark") root.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf8f4" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14161b" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={profile.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {photoUrl && <meta property="og:image" content={photoUrl} />}
+    {photoUrl && profile.photoAlt && <meta property="og:image:alt" content={profile.photoAlt} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {photoUrl && <meta name="twitter:image" content={photoUrl} />}
+    {!noindex && <script type="application/ld+json" set:html={jsonLd} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

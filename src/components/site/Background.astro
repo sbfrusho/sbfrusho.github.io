@@ -1,0 +1,39 @@
+---
+/** Education and recognition share a band, side by side when both are shown. */
+import { content } from "@/lib/content";
+import { show } from "./visibility";
+
+const both = show.education && show.achievements;
+---
+<div class="section">
+  <div class:list={["wrap", "background", { "background-two": both }]}>
+    {show.education && (
+      <section id="education" aria-labelledby="education-title">
+        <h2 id="education-title" class="section-title">Education</h2>
+        <ul class="plain-list">
+          {content.education.map((item) => (
+            <li data-reveal>
+              <h3 class="item-title">{item.school}</h3>
+              <p class="item-sub">{item.degree}</p>
+              <p class="eyebrow item-meta">{item.period}{item.grade && <> · {item.grade}</>}</p>
+              {item.note && <p class="item-note">{item.note}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+    {show.achievements && (
+      <section id="achievements" aria-labelledby="achievements-title">
+        <h2 id="achievements-title" class="section-title">Recognition</h2>
+        <ul class="plain-list">
+          {content.achievements.map((item) => (
+            <li data-reveal>
+              <h3 class="item-title">{item.title}</h3>
+              {item.detail && <p class="item-note">{item.detail}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </div>
+</div>

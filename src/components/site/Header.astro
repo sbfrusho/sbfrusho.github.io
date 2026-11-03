@@ -1,0 +1,131 @@
+---
+import { content } from "@/lib/content";
+import Icon from "./Icon.astro";
+import { navItems } from "./visibility";
+
+/** Prefix for anchors: "" on the home page, "/" elsewhere. */
+interface Props { base?: string }
+const { base = "" } = Astro.props;
+const { shortName } = content.profile;
+---
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href={base ? "/" : "#top"}>
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>{shortName}</span>
+    </a>
+    {navItems.length > 0 && (
+      <nav class="nav-wide" aria-label="Primary">
+        <ul>
+          {navItems.map((item) => <li><a href={`${base}#${item.id}`} data-spy={item.id}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+    )}
+    <div class="header-actions">
+      <button type="button" class="icon-btn" data-theme-toggle aria-label="Theme: follows system. Switch to light.">
+        <span data-theme-icon="system"><Icon name="system" /></span>
+        <span data-theme-icon="light" hidden><Icon name="sun" /></span>
+        <span data-theme-icon="dark" hidden><Icon name="moon" /></span>
+      </button>
+      {navItems.length > 0 && (
+        <details class="nav-narrow" data-menu>
+          <summary class="icon-btn" aria-label="Menu">
+            <Icon name="menu" size={20} class="menu-open" />
+            <Icon name="close" size={20} class="menu-close" />
+          </summary>
+          <nav aria-label="Primary, compact">
+            <ul>
+              {navItems.map((item) => <li><a href={`${base}#${item.id}`}>{item.label}</a></li>)}
+            </ul>
+          </nav>
+        </details>
+      )}
+    </div>
+  </div>
+</header>
+
+<script>
+  /* Theme: system -> light -> dark. Keep the storage key in sync with the head script in Base.astro. */
+  const KEY = "theme";
+  const ORDER = ["system", "light", "dark"] as const;
+  type Mode = (typeof ORDER)[number];
+  const LABEL: Record<Mode, string> = { system: "follows system", light: "light", dark: "dark" };
+  const SURFACE = { light: "#faf8f4", dark: "#14161b" };
+
+  const root = document.documentElement;
+  const toggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  const metas = {
+    light: document.querySelector<HTMLMetaElement>('meta[name="theme-color"][media*="light"]'),
+    dark: document.querySelector<HTMLMetaElement>('meta[name="theme-color"][media*="dark"]'),
+  };
+
+  const stored = (): Mode => {
+    try {
+      const value = localStorage.getItem(KEY);
+      return value === "light" || value === "dark" ? value : "system";
+    } catch {
+      return "system";
+    }
+  };
+
+  const render = (mode: Mode) => {
+    if (!toggle) return;
+    const next = ORDER[(ORDER.indexOf(mode) + 1) % ORDER.length];
+    toggle.setAttribute("aria-label", `Theme: ${LABEL[mode]}. Switch to ${next === "system" ? "system" : next}.`);
+    toggle.title = `Theme: ${LABEL[mode]}`;
+    toggle.querySelectorAll<HTMLElement>("[data-theme-icon]").forEach((icon) => {
+      icon.hidden = icon.dataset.themeIcon !== mode;
+    });
+    if (metas.light) metas.light.content = mode === "dark" ? SURFACE.dark : SURFACE.light;
+    if (metas.dark) metas.dark.content = mode === "light" ? SURFACE.light : SURFACE.dark;
+  };
+
+  let mode = stored();
+  render(mode);
+  toggle?.addEventListener("click", () => {
+    mode = ORDER[(ORDER.indexOf(mode) + 1) % ORDER.length];
+    if (mode === "system") root.removeAttribute("data-theme");
+    else root.setAttribute("data-theme", mode);
+    try {
+      if (mode === "system") localStorage.removeItem(KEY);
+      else localStorage.setItem(KEY, mode);
+    } catch {
+      /* Storage blocked: the choice still applies to this page view. */
+    }
+    render(mode);
+  });
+
+  /* Compact menu: close on navigation, Escape or an outside click. */
+  const menu = document.querySelector<HTMLDetailsElement>("[data-menu]");
+  if (menu) {
+    menu.addEventListener("click", (event) => {
+      if ((event.target as Element).closest("a")) menu.open = false;
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.open) {
+        menu.open = false;
+        menu.querySelector("summary")?.focus();
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (menu.open && !menu.contains(event.target as Node)) menu.open = false;
+    });
+  }
+
+  /* Mark the section being read in the wide nav. */
+  const spies = [...document.querySelectorAll<HTMLAnchorElement>("[data-spy]")];
+  const targets = spies.flatMap((link) => document.getElementById(link.dataset.spy ?? "") ?? []);
+  if (targets.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const link = spies.find((s) => s.dataset.spy === entry.target.id);
+          if (entry.isIntersecting) link?.setAttribute("aria-current", "true");
+          else link?.removeAttribute("aria-current");
+        }
+      },
+      { rootMargin: "-45% 0px -54% 0px" },
+    );
+    targets.forEach((target) => observer.observe(target));
+  }
+</script>

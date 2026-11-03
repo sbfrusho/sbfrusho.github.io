@@ -1,0 +1,24 @@
+---
+import { content } from "@/lib/content";
+import Icon from "./Icon.astro";
+
+interface Props { class?: string }
+const { class: className = "socials" } = Astro.props;
+const { socials } = content.profile;
+---
+{socials.length > 0 && (
+  <ul class={className}>
+    {socials.map((social) => {
+      const external = /^https?:/i.test(social.url);
+      return (
+        <li>
+          <a href={social.url} {...external ? { target: "_blank", rel: "noopener noreferrer" } : {}}>
+            <Icon name={social.platform} size={18} />
+            <span>{social.label}</span>
+            {external && <span class="sr-only"> (opens in a new tab)</span>}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+)}

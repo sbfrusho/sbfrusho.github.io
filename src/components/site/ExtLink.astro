@@ -1,0 +1,11 @@
+---
+/** A text link with the arrow affordance. http(s) links open a new tab; mailto: and tel: stay in place. */
+import Icon from "./Icon.astro";
+
+interface Props { href: string; class?: string; arrow?: boolean }
+const { href, class: className = "tlink", arrow = true } = Astro.props;
+const external = /^https?:/i.test(href);
+---
+<a class={className} href={href} {...external ? { target: "_blank", rel: "noopener noreferrer" } : {}}>
+  <span><slot /></span>{arrow && external && <Icon name="arrow" size={14} class="tlink-arrow" />}{external && <span class="sr-only"> (opens in a new tab)</span>}
+</a>

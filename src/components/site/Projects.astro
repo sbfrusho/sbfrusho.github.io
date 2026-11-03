@@ -1,0 +1,65 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { visibleProjects } from "./visibility";
+import { projectSchema } from "@/lib/schema";
+
+const featured = visibleProjects.filter((p) => p.featured);
+const others = visibleProjects.filter((p) => !p.featured);
+/* Schema order, so reordering projects in the admin doesn't reshuffle the chips. */
+const categories = projectSchema.shape.category.options.filter((c) => visibleProjects.some((p) => p.category === c));
+const countOf = (category: string) => visibleProjects.filter((p) => p.category === category).length;
+---
+<section id="projects" class="section" aria-labelledby="projects-title" data-projects>
+  <div class="wrap">
+    <div class="projects-head">
+      <h2 id="projects-title" class="section-title section-title-lg">Selected work</h2>
+      {categories.length > 1 && (
+        <div class="filters" role="group" aria-label="Filter projects by category">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All <span class="chip-n">{visibleProjects.length}</span></button>
+          {categories.map((c) => (
+            <button type="button" class="chip" data-filter={c} aria-pressed="false">{c} <span class="chip-n">{countOf(c)}</span></button>
+          ))}
+        </div>
+      )}
+    </div>
+    <p class="sr-only" role="status" data-filter-status></p>
+
+    {featured.length > 0 && (
+      <div class="features" data-group>
+        {featured.map((project) => <ProjectCard project={project} featured />)}
+      </div>
+    )}
+
+    {others.length > 0 && (
+      <div class="rows-group" data-group>
+        {featured.length > 0 && <h3 class="rows-title">More projects</h3>}
+        <div class="rows">
+          {others.map((project) => <ProjectCard project={project} level={featured.length > 0 ? 4 : 3} />)}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector("[data-projects]");
+  if (root) {
+    const chips = [...root.querySelectorAll<HTMLButtonElement>("[data-filter]")];
+    const items = [...root.querySelectorAll<HTMLElement>("[data-category]")];
+    const groups = [...root.querySelectorAll<HTMLElement>("[data-group]")];
+    const status = root.querySelector("[data-filter-status]");
+    for (const chip of chips) {
+      chip.addEventListener("click", () => {
+        const filter = chip.dataset.filter;
+        for (const other of chips) other.setAttribute("aria-pressed", String(other === chip));
+        let shown = 0;
+        for (const item of items) {
+          item.hidden = filter !== "all" && item.dataset.category !== filter;
+          if (!item.hidden) shown++;
+        }
+        for (const group of groups) group.hidden = !group.querySelector("[data-category]:not([hidden])");
+        if (status) status.textContent = `Showing ${shown} ${shown === 1 ? "project" : "projects"}`;
+      });
+    }
+  }
+</script>

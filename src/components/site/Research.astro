@@ -1,0 +1,31 @@
+---
+import { content } from "@/lib/content";
+import LinkRow from "./LinkRow.astro";
+import TechList from "./TechList.astro";
+---
+<section id="research" class="section section-tint" aria-labelledby="research-title">
+  <div class="wrap">
+    <h2 id="research-title" class="section-title">Research</h2>
+    <div class="research-list">
+      {content.research.map((item) => (
+        <article class:list={["research", { "research-metric": item.metric }]} data-reveal>
+          {item.metric && (
+            <div class="metric">
+              {item.metricLabel && <p class="det-tab">{item.metricLabel}</p>}
+              <p class="det-box metric-box" style={`--n:${Math.max(item.metric.length, 4)}`}>
+                <span class="metric-value">{item.metric}</span>
+              </p>
+            </div>
+          )}
+          <div class="research-body">
+            <p class="eyebrow">{item.type}</p>
+            <h3 class="research-title">{item.title}</h3>
+            <p class="research-desc">{item.description}</p>
+            <TechList items={item.tech} />
+            <LinkRow links={item.links} />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

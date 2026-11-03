@@ -1,0 +1,37 @@
+---
+import LinkRow from "./LinkRow.astro";
+import ProjectCover from "./ProjectCover.astro";
+import TechList from "./TechList.astro";
+import type { Project } from "@/lib/schema";
+
+interface Props { project: Project; featured?: boolean; level?: 3 | 4 }
+const { project, featured = false, level = 3 } = Astro.props;
+const Heading = level === 3 ? "h3" : "h4";
+---
+{featured ? (
+  <article class="feature" data-category={project.category} data-reveal>
+    <ProjectCover project={project} class="feature-cover" />
+    <div class="feature-body">
+      <p class="eyebrow">{project.category}</p>
+      <Heading class="feature-title">{project.title}</Heading>
+      {project.tagline && <p class="feature-tagline">{project.tagline}</p>}
+      <p class="feature-desc">{project.description}</p>
+      <TechList items={project.tech} />
+      <LinkRow links={project.links} />
+    </div>
+  </article>
+) : (
+  <article class="row" data-category={project.category} data-reveal>
+    <ProjectCover project={project} class="row-cover" />
+    <div class="row-head">
+      <Heading class="row-title">{project.title}</Heading>
+      {project.tagline && <p class="row-tagline">{project.tagline}</p>}
+      <p class="eyebrow row-cat">{project.category}</p>
+    </div>
+    <div class="row-body">
+      <p>{project.description}</p>
+      <TechList items={project.tech} />
+      <LinkRow links={project.links} />
+    </div>
+  </article>
+)}

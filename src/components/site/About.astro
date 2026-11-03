@@ -1,0 +1,18 @@
+---
+import { content } from "@/lib/content";
+
+const [lead, ...rest] = content.profile.about;
+---
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="wrap rail">
+    <h2 id="about-title" class="section-title">About</h2>
+    <div class="rail-body about" data-reveal>
+      <p class="about-lead">{lead}</p>
+      {rest.length > 0 && (
+        <div class="about-rest">
+          {rest.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

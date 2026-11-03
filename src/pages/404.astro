@@ -1,0 +1,21 @@
+---
+import Footer from "@/components/site/Footer.astro";
+import Header from "@/components/site/Header.astro";
+import { content } from "@/lib/content";
+import Base from "@/layouts/Base.astro";
+---
+<Base title={`Page not found — ${content.profile.name}`} noindex>
+  <Header base="/" />
+  <main id="main" tabindex="-1" class="not-found">
+    <div class="wrap">
+      <div class="metric not-found-metric">
+        <p class="det-tab">No detections</p>
+        <p class="det-box metric-box" style="--n:4"><span class="metric-value">404</span></p>
+      </div>
+      <h1 class="not-found-title">This page doesn’t exist.</h1>
+      <p class="not-found-copy">The link may be out of date, or the address may have a typo.</p>
+      <a class="btn btn-primary" href="/">Back to the home page</a>
+    </div>
+  </main>
+  <Footer />
+</Base>

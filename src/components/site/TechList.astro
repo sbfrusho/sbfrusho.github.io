@@ -1,0 +1,9 @@
+---
+interface Props { items: string[]; label?: string }
+const { items, label = "Technologies" } = Astro.props;
+---
+{items.length > 0 && (
+  <ul class="tech" aria-label={label}>
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+)}

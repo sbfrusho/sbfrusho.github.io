@@ -1,0 +1,54 @@
+---
+/**
+ * The admin is a static page: all data comes from the browser talking to api.github.com.
+ *
+ * It mounts React from a same-origin module script instead of `client:only="react"`. A client island
+ * makes Astro emit inline <script> and <style> tags, and allowing those would mean weakening this CSP
+ * with 'unsafe-inline' or hard-coding hashes that break on every Astro upgrade.
+ *
+ * The CSP is production only, because the Vite dev server injects inline scripts and styles.
+ */
+import "../styles/tokens.css";
+import { content } from "../lib/content";
+
+const siteName = content.profile.shortName;
+
+const csp = [
+  "default-src 'none'",
+  "script-src 'self'",
+  "style-src 'self'",
+  // data: because the build inlines the smallest @fontsource subsets into the stylesheet.
+  "font-src 'self' data:",
+  "img-src 'self' data: blob: https://raw.githubusercontent.com",
+  "connect-src 'self' https://api.github.com",
+  "manifest-src 'none'",
+  "object-src 'none'",
+  "frame-src 'none'",
+  "worker-src 'none'",
+  "base-uri 'none'",
+  "form-action 'none'",
+].join("; ");
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    {import.meta.env.PROD && <meta http-equiv="Content-Security-Policy" content={csp} />}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Admin · {siteName}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Classic blocking script, so a saved theme applies before first paint. External to satisfy the CSP. -->
+    <script is:inline src="/admin-theme.js"></script>
+  </head>
+  <body>
+    <div id="admin-root" data-site-name={siteName}></div>
+    <noscript><p>The admin panel needs JavaScript.</p></noscript>
+    <script>
+      import { mount } from "../admin/main";
+      mount(document.getElementById("admin-root") as HTMLElement);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+---
+/**
+ * Project artwork: the uploaded image when there is one, otherwise a generated cover.
+ * Images close to the frame's shape fill it. Very wide or tall ones (phone screenshots, logos)
+ * are shown whole on a quiet backdrop rather than cropped to a sliver.
+ */
+import { imageInfo } from "./assets";
+import { COVER_H, COVER_W, makeCover } from "./cover";
+import type { Project } from "@/lib/schema";
+
+interface Props { project: Project; class?: string }
+const { project, class: className = "" } = Astro.props;
+
+const FRAME = 16 / 10;
+const image = await imageInfo(project.image);
+const ratio = image?.width && image?.height ? image.width / image.height : FRAME;
+const fits = ratio >= FRAME * 0.7 && ratio <= FRAME * 1.45;
+const art = image ? null : makeCover(project.id, project.category);
+---
+<div class={`cover ${className}`}>
+  {image && (
+    <img
+      class={fits ? "cover-fill" : "cover-whole"}
+      src={image.src}
+      alt={project.imageAlt}
+      width={image.width}
+      height={image.height}
+      loading="lazy"
+      decoding="async"
+    />
+  )}
+  {art && (
+    <svg viewBox={`0 0 ${COVER_W} ${COVER_H}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <rect width={COVER_W} height={COVER_H} fill={art.background} />
+      {art.shapes.map((s) => (
+        <rect x={s.x} y={s.y} width={s.w} height={s.h} rx={s.r} fill={s.fill} stroke={s.stroke} stroke-width={s.stroke ? 2 : undefined} opacity={s.opacity} />
+      ))}
+      {art.paths.map((p) => (
+        <path d={p.d} fill={p.fill} opacity={p.opacity} stroke={p.stroke} stroke-width={p.strokeWidth} stroke-linecap="square" />
+      ))}
+    </svg>
+  )}
+</div>

@@ -1,0 +1,12 @@
+---
+import { content } from "@/lib/content";
+import Icon from "./Icon.astro";
+
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>© {year} {content.profile.name}</p>
+    <a class="tlink" href="#top"><span>Back to top</span><Icon name="up" size={14} /></a>
+  </div>
+</footer>

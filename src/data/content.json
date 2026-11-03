@@ -1,0 +1,509 @@
+{
+  "settings": {
+    "siteTitle": "Sakib Bin Faruque Rusho — Android & AI Engineer",
+    "metaDescription": "Android and AI engineer building production Kotlin and Jetpack Compose apps for AI-assisted healthcare, with research in computer vision.",
+    "sections": {
+      "about": true,
+      "experience": true,
+      "projects": true,
+      "research": true,
+      "skills": true,
+      "education": true,
+      "achievements": true,
+      "contact": true
+    }
+  },
+  "profile": {
+    "name": "Sakib Bin Faruque Rusho",
+    "shortName": "SBF Rusho",
+    "headline": "Android & AI engineer building production apps with Kotlin and Jetpack Compose.",
+    "roles": [
+      "Android Engineer",
+      "AI Integration",
+      "Computer Vision"
+    ],
+    "tagline": "I build reliable, well-architected mobile apps for AI-assisted healthcare, and I care about the machine learning that runs behind them.",
+    "about": [
+      "I'm a software engineer at MyMedicalHub International, where I build native Android apps for AI-assisted healthcare, rehabilitation and athletic assessment. My work covers movement analysis, posture tracking, frame-level pose analysis and Android Health Connect integration.",
+      "Before moving to native Android I shipped Flutter apps with Firebase and Clean Architecture. I studied Computer Science & Engineering at the University of Rajshahi, where my thesis improved object detection in aerial imagery by combining attention and contrast enhancement in RetinaNet.",
+      "I'm most interested in the space where mobile engineering meets machine learning: taking models out of notebooks and into apps people rely on."
+    ],
+    "location": "Rajshahi, Bangladesh",
+    "email": "sbfrusho.arafat09@gmail.com",
+    "phone": "+880 1781 314166",
+    "photo": "/uploads/profile.jpg",
+    "photoAlt": "Portrait of Sakib Bin Faruque Rusho",
+    "available": true,
+    "availabilityText": "Open to Android and AI/ML engineering roles",
+    "resumes": [
+      {
+        "label": "Software Engineer résumé",
+        "file": "/resume/sakib-rusho-software-engineer.pdf"
+      },
+      {
+        "label": "AI Engineer résumé",
+        "file": "/resume/sakib-rusho-ai-engineer.pdf"
+      }
+    ],
+    "socials": [
+      {
+        "platform": "github",
+        "label": "GitHub",
+        "url": "https://github.com/sbfrusho"
+      },
+      {
+        "platform": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/sakib-bin-faruque-rusho-9b54a4431/"
+      },
+      {
+        "platform": "email",
+        "label": "Email",
+        "url": "mailto:sbfrusho.arafat09@gmail.com"
+      }
+    ]
+  },
+  "stats": [
+    {
+      "value": "3",
+      "label": "Production apps on Google Play"
+    },
+    {
+      "value": "93.47%",
+      "label": "mAP@0.5 in thesis research"
+    },
+    {
+      "value": "50+",
+      "label": "Original public GitHub repositories"
+    }
+  ],
+  "experience": [
+    {
+      "id": "mymedicalhub",
+      "role": "Software Engineer (Android & AI Integration)",
+      "company": "MyMedicalHub International",
+      "companyUrl": "https://mymedicalhub.com",
+      "location": "",
+      "start": "Jan 2026",
+      "end": "",
+      "current": true,
+      "highlights": [
+        "Develop and maintain production Android apps in Kotlin and Jetpack Compose for AI-assisted healthcare, rehabilitation and athletic assessment.",
+        "Integrated Android Health Connect to read health and activity data from wearable devices into the apps' assessment and progress features.",
+        "Implement computer vision video processing with frame-level pose analysis and automatic presence detection to control session triggers.",
+        "Build musculoskeletal assessment, movement analysis, posture tracking and exercise-guidance features with AI-assisted feedback.",
+        "Work with backend, QA and product teams to test, debug and ship features, using CI/CD and Agile routines."
+      ],
+      "tech": [
+        "Kotlin",
+        "Jetpack Compose",
+        "MVVM",
+        "Clean Architecture",
+        "Health Connect"
+      ],
+      "links": [
+        {
+          "label": "EMMA Health",
+          "url": "https://play.google.com/store/apps/details?id=com.mmh.emmahealth"
+        },
+        {
+          "label": "Atlas Athlete",
+          "url": "https://play.google.com/store/apps/details?id=com.mmh.atlasathlete"
+        },
+        {
+          "label": "AI Guided Therapy",
+          "url": "https://play.google.com/store/apps/details?id=com.mmh.mybackhub"
+        }
+      ]
+    },
+    {
+      "id": "scalebridger",
+      "role": "Junior Flutter Developer",
+      "company": "ScaleBridger",
+      "companyUrl": "",
+      "location": "",
+      "start": "Mar 2025",
+      "end": "May 2025",
+      "current": false,
+      "highlights": [
+        "Developed production Flutter apps integrated with Firebase, using Clean Architecture with Cubit/Bloc."
+      ],
+      "tech": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Bloc/Cubit",
+        "Clean Architecture"
+      ],
+      "links": []
+    }
+  ],
+  "projects": [
+    {
+      "id": "studybuddy-ai",
+      "title": "StudyBuddy AI",
+      "tagline": "Photo-to-answer study assistant",
+      "description": "An Android app that turns a photo of a textbook question into a short, exam-style answer. A vision LLM reads Bangla, math and diagrams with an on-device OCR fallback, plus automatic model fallback, follow-up answers, saved answers and Keystore-encrypted API keys.",
+      "category": "Mobile",
+      "tech": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Clean Architecture",
+        "Koin",
+        "Ktor",
+        "CameraX",
+        "ML Kit",
+        "Room",
+        "Gemini API"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sbfrusho/AiStuddyBuddy"
+        }
+      ],
+      "featured": true,
+      "hidden": false
+    },
+    {
+      "id": "limiter",
+      "title": "Limiter",
+      "tagline": "App usage control",
+      "description": "A digital wellbeing app that tracks usage, enforces daily limits and blocks restricted apps through real-time foreground-app monitoring, with a full-screen lockout countdown when a limit is reached.",
+      "category": "Mobile",
+      "tech": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Coroutines",
+        "UsageStatsManager",
+        "Accessibility Service"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sbfrusho/limiter"
+        }
+      ],
+      "featured": true,
+      "hidden": false
+    },
+    {
+      "id": "smart-queue",
+      "title": "Smart Queue",
+      "tagline": "Appointment & queue management",
+      "description": "A full-stack system with a REST API and React dashboard for booking, live queue status and call-next, complete and cancel workflows.",
+      "category": "Web",
+      "tech": [
+        "C#",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "SQLite",
+        "React"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sbfrusho/SmartQueue"
+        }
+      ],
+      "featured": true,
+      "hidden": false
+    },
+    {
+      "id": "ecommerce-platform",
+      "title": "E-commerce Platform",
+      "tagline": "Shopping app and admin panel",
+      "description": "A shopping app with real-time updates and Stripe payments, plus a separate admin panel for managing products and orders.",
+      "category": "Mobile",
+      "tech": [
+        "Flutter",
+        "Firebase",
+        "Stripe API"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "User app",
+          "url": "https://github.com/sbfrusho/UTM_clothing_app"
+        },
+        {
+          "label": "Admin panel",
+          "url": "https://github.com/sbfrusho/UTM_admin_panel_new"
+        }
+      ],
+      "featured": false,
+      "hidden": false
+    },
+    {
+      "id": "voicebridge",
+      "title": "VoiceBridge",
+      "tagline": "Autism support app",
+      "description": "An educational app with gamified learning, emotion recognition and progress tracking, built during Learnathon 3.0.",
+      "category": "Mobile",
+      "tech": [
+        "Flutter",
+        "MVVM",
+        "Firebase",
+        "GetX"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Learnathon-By-Geeky-Solutions/deltaforce"
+        }
+      ],
+      "featured": false,
+      "hidden": false
+    },
+    {
+      "id": "voyage-visage",
+      "title": "Voyage Visage",
+      "tagline": "Travel blogging app",
+      "description": "A travel blogging app where people can document and share trips, with image uploads, real-time updates and profile management.",
+      "category": "Mobile",
+      "tech": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Provider"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sbfrusho/Voyage-Visage"
+        }
+      ],
+      "featured": false,
+      "hidden": false
+    },
+    {
+      "id": "face-verification",
+      "title": "Face Verification",
+      "tagline": "Siamese neural networks",
+      "description": "Trained and evaluated Siamese neural networks using BCE, Contrastive and Triplet Loss on the WIDER FACE and Anime datasets.",
+      "category": "AI & ML",
+      "tech": [
+        "PyTorch",
+        "Siamese Networks",
+        "Triplet Loss"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sbfrusho/Computer-Vision/tree/main/assignment_8"
+        }
+      ],
+      "featured": false,
+      "hidden": false
+    },
+    {
+      "id": "gan-variants",
+      "title": "GAN Variants for Face Generation",
+      "tagline": "DCGAN, Conditional GAN and CycleGAN",
+      "description": "Implemented DCGAN, Conditional GAN and CycleGAN for synthetic face generation, attribute transfer and image-to-image translation.",
+      "category": "AI & ML",
+      "tech": [
+        "TensorFlow",
+        "DCGAN",
+        "cGAN",
+        "CycleGAN"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sbfrusho/Computer-Vision/tree/main/assignment_11"
+        }
+      ],
+      "featured": false,
+      "hidden": false
+    },
+    {
+      "id": "crowd-counting",
+      "title": "Crowd Counting & Density Segmentation",
+      "tagline": "U-Net and MCNN",
+      "description": "Trained U-Net and MCNN architectures on ShanghaiTech Part A for crowd density estimation, evaluated with MAE and RMSE.",
+      "category": "AI & ML",
+      "tech": [
+        "U-Net",
+        "MCNN",
+        "Python"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sbfrusho/Computer-Vision/tree/main/assignment_12"
+        }
+      ],
+      "featured": false,
+      "hidden": false
+    },
+    {
+      "id": "knowledge-distillation",
+      "title": "Knowledge Distillation & Transfer Learning",
+      "tagline": "Compact models for the edge",
+      "description": "Implemented soft-label batch-wise distillation between ResNet50, VGG16 and compact student CNNs to speed up edge inference with minimal accuracy loss.",
+      "category": "AI & ML",
+      "tech": [
+        "ResNet50",
+        "VGG16",
+        "Transfer Learning"
+      ],
+      "image": "",
+      "imageAlt": "",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/sbfrusho/Computer-Vision/tree/main/assignment_13"
+        }
+      ],
+      "featured": false,
+      "hidden": false
+    }
+  ],
+  "research": [
+    {
+      "id": "thesis",
+      "type": "B.Sc. thesis",
+      "title": "Integrating CBAM and CLAHE in RetinaNet for Enhanced Remote Sensing Object Detection",
+      "description": "A RetinaNet-based framework that combines attention mechanisms and contrast enhancement to improve object detection in aerial imagery.",
+      "metric": "93.47%",
+      "metricLabel": "mAP@0.5 on the RSOD dataset",
+      "tech": [
+        "RetinaNet",
+        "CBAM",
+        "CLAHE"
+      ],
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/sbfrusho/RSOD_RetinaNet"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "ru",
+      "school": "University of Rajshahi",
+      "degree": "B.Sc. in Computer Science & Engineering",
+      "period": "2020 – 2025",
+      "grade": "CGPA 3.52 / 4.00",
+      "note": ""
+    }
+  ],
+  "skills": [
+    {
+      "id": "languages",
+      "group": "Languages",
+      "items": [
+        "Kotlin",
+        "Python",
+        "Dart",
+        "Java",
+        "C",
+        "C++",
+        "C#",
+        "SQL"
+      ]
+    },
+    {
+      "id": "mobile",
+      "group": "Mobile",
+      "items": [
+        "Jetpack Compose",
+        "Coroutines/Flow",
+        "Koin",
+        "Ktor",
+        "Room",
+        "CameraX",
+        "ML Kit",
+        "Health Connect",
+        "Flutter",
+        "Bloc/Cubit",
+        "GetX",
+        "Provider"
+      ]
+    },
+    {
+      "id": "ai",
+      "group": "AI & ML",
+      "items": [
+        "PyTorch",
+        "TensorFlow",
+        "Keras",
+        "OpenCV",
+        "YOLO",
+        "RetinaNet",
+        "U-Net",
+        "Pose Estimation",
+        "GANs",
+        "Knowledge Distillation",
+        "LLM APIs (Gemini, OpenRouter)"
+      ]
+    },
+    {
+      "id": "backend",
+      "group": "Backend & Web",
+      "items": [
+        "Firebase",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "Laravel",
+        "React",
+        "Stripe API",
+        "REST APIs"
+      ]
+    },
+    {
+      "id": "architecture",
+      "group": "Architecture",
+      "items": [
+        "Clean Architecture",
+        "MVVM"
+      ]
+    },
+    {
+      "id": "tools",
+      "group": "Data & Tools",
+      "items": [
+        "MySQL",
+        "SQLite",
+        "Git",
+        "GitHub",
+        "Azure DevOps",
+        "Postman",
+        "Jupyter",
+        "LaTeX"
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "id": "learnathon",
+      "title": "2nd Runner Up, Flutter Stack",
+      "detail": "Learnathon 3.0, after completing its 4-month intensive mobile application training program."
+    },
+    {
+      "id": "kuet",
+      "title": "Ranked 7th, KUET Datathon",
+      "detail": "Data science competition."
+    }
+  ]
+}
