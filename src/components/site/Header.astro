@@ -50,7 +50,7 @@ const { shortName } = content.profile;
   const ORDER = ["system", "light", "dark"] as const;
   type Mode = (typeof ORDER)[number];
   const LABEL: Record<Mode, string> = { system: "follows system", light: "light", dark: "dark" };
-  const SURFACE = { light: "#faf8f4", dark: "#14161b" };
+  const SURFACE = { light: "#f8f2e4", dark: "#14161b" };
 
   const root = document.documentElement;
   const toggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");

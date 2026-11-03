@@ -1,6 +1,6 @@
 /**
  * Deterministic fallback covers for projects without an image.
- * The same id always yields the same art. Colours come from the --cover-* tokens, which hold in both themes.
+ * The same id always yields the same art. Colours come from the --cover-* tokens, which are warm in light mode and green in dark mode.
  */
 export const COVER_W = 800;
 export const COVER_H = 500;
